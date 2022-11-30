@@ -10,5 +10,3 @@ usersRouter.delete('/:id', handleUsers.deleteOneUser);
 usersRouter.post('/login/:email/:pass', handleUsers.logInUser);
 
 module.exports = usersRouter;
-
-

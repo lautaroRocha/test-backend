@@ -25,14 +25,12 @@ async function updateResource(req, res){
     const id = req.params.id;
     const newMessage = req.params.value
     const formattedMessage = newMessage.replaceAll('-', " ")
-    console.log(formattedMessage)
     try{
         await Resource.updateOne({_id: id}, {message : formattedMessage})
         res.json({ message: 'Producto editado'})
     }catch(err){
         res.json({message : err.message})
     }
-  
 }
 
 async function deleteOneResource(req, res) {
