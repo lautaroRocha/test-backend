@@ -9,6 +9,16 @@ async function getAllResources(req, res){
     }
 }
 
+async function getOneResource(req, res){
+    const id = req.params.id;
+    try{
+        const aResource = await Resource.findById(id);
+        res.status(201).json(aResource)
+    }catch(err){
+        res.status(400).json({message : err.message})
+    }
+}
+
 async function addResource(req, res){
     const resource = new Resource({
         message : req.body.message
@@ -45,4 +55,4 @@ async function deleteOneResource(req, res) {
 
 
 
-module.exports = {getAllResources, addResource, updateResource, deleteOneResource}
+module.exports = {getAllResources, getOneResource, addResource, updateResource, deleteOneResource}
