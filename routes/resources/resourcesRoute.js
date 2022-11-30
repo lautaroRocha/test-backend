@@ -1,15 +1,15 @@
 const resourcesRouter = require('express').Router();
-const {getAllResources, addResource, updateResource, deleteOneResource} = require("../../controllers/resourcesController")
+const handleResources = require("../../controllers/resourcesController")
 const validateUserRol = require('../../middleware/validateUserRol');
 
 
-resourcesRouter.get('/', getAllResources)
+resourcesRouter.get('/', handleResources.getAllResources)
 
-resourcesRouter.post('/', addResource)
+resourcesRouter.post('/', handleResources.addResource)
 
-resourcesRouter.patch('/:id/:value', updateResource)
+resourcesRouter.patch('/:id/:value', handleResources.updateResource)
 
-resourcesRouter.delete('/:userId/:resourceId', [validateUserRol, deleteOneResource])
+resourcesRouter.delete('/:userId/:resourceId', [validateUserRol, handleResources.deleteOneResource])
 
 
 module.exports = resourcesRouter;
